@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		352FCCDFA68C5354F55927AD /* Pods_raceGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 309EE086D2052FF27F50E158 /* Pods_raceGame.framework */; };
 		384E9C12281072B7007785F0 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E9C11281072B7007785F0 /* File.swift */; };
 		8E1180992812001E001591BB /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1180972812001E001591BB /* ScoreTableViewCell.swift */; };
 		8E11809A2812001E001591BB /* ScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E1180982812001E001591BB /* ScoreTableViewCell.xib */; };
@@ -15,6 +16,7 @@
 		8E412D2227F643B8001CE670 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E412D2127F643B8001CE670 /* UserDefaultsKeys.swift */; };
 		8E412D2427F6449A001CE670 /* Appsettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E412D2327F6449A001CE670 /* Appsettings.swift */; };
 		8E412D2627FB3947001CE670 /* UiColor+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E412D2527FB3947001CE670 /* UiColor+Codable.swift */; };
+		8E49EF612832F29B00FDED51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E49EF602832F29B00FDED51 /* GoogleService-Info.plist */; };
 		8E8411FD2811E77F004A0C67 /* Obstacles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8411FC2811E77E004A0C67 /* Obstacles.swift */; };
 		8E8411FF2811E7BE004A0C67 /* ResultRace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8411FE2811E7BE004A0C67 /* ResultRace.swift */; };
 		8EB6E73027F245A900B5C8C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB6E72F27F245A900B5C8C0 /* AppDelegate.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1FD50EAD7BA4B2C59A192C55 /* Pods-raceGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-raceGame.debug.xcconfig"; path = "Target Support Files/Pods-raceGame/Pods-raceGame.debug.xcconfig"; sourceTree = "<group>"; };
+		309EE086D2052FF27F50E158 /* Pods_raceGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_raceGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		384E9C11281072B7007785F0 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		8E1180972812001E001591BB /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
 		8E1180982812001E001591BB /* ScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreTableViewCell.xib; sourceTree = "<group>"; };
@@ -38,6 +42,7 @@
 		8E412D2127F643B8001CE670 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		8E412D2327F6449A001CE670 /* Appsettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appsettings.swift; sourceTree = "<group>"; };
 		8E412D2527FB3947001CE670 /* UiColor+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiColor+Codable.swift"; sourceTree = "<group>"; };
+		8E49EF602832F29B00FDED51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E8411FC2811E77E004A0C67 /* Obstacles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacles.swift; sourceTree = "<group>"; };
 		8E8411FE2811E7BE004A0C67 /* ResultRace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRace.swift; sourceTree = "<group>"; };
 		8EB6E72C27F245A900B5C8C0 /* raceGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = raceGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +57,7 @@
 		8EB6E74927F39BD900B5C8C0 /* GTA Russian.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTA Russian.ttf"; sourceTree = "<group>"; };
 		8EE7F60627FDBA42008C89EA /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		8EE7F60827FF7BEA008C89EA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		D699777FAA7F5837CDFF98CC /* Pods-raceGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-raceGame.release.xcconfig"; path = "Target Support Files/Pods-raceGame/Pods-raceGame.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,17 +65,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				352FCCDFA68C5354F55927AD /* Pods_raceGame.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2858A1C7440FFD6FF26C7C5C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1FD50EAD7BA4B2C59A192C55 /* Pods-raceGame.debug.xcconfig */,
+				D699777FAA7F5837CDFF98CC /* Pods-raceGame.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6E9810684EB92654F2F10FDA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				309EE086D2052FF27F50E158 /* Pods_raceGame.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8EB6E72327F245A800B5C8C0 = {
 			isa = PBXGroup;
 			children = (
 				8EB6E72E27F245A900B5C8C0 /* raceGame */,
 				8EB6E72D27F245A900B5C8C0 /* Products */,
+				2858A1C7440FFD6FF26C7C5C /* Pods */,
+				6E9810684EB92654F2F10FDA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +130,7 @@
 				8EB6E73827F245AA00B5C8C0 /* Assets.xcassets */,
 				8EB6E73A27F245AA00B5C8C0 /* LaunchScreen.storyboard */,
 				8EB6E73D27F245AA00B5C8C0 /* Info.plist */,
+				8E49EF602832F29B00FDED51 /* GoogleService-Info.plist */,
 				8EB6E74827F39BB600B5C8C0 /* Fonts */,
 			);
 			path = raceGame;
@@ -124,9 +151,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EB6E74027F245AA00B5C8C0 /* Build configuration list for PBXNativeTarget "raceGame" */;
 			buildPhases = (
+				8B7534314167B6322720A173 /* [CP] Check Pods Manifest.lock */,
 				8EB6E72827F245A900B5C8C0 /* Sources */,
 				8EB6E72927F245A900B5C8C0 /* Frameworks */,
 				8EB6E72A27F245A900B5C8C0 /* Resources */,
+				A47B4D6BAAA423C6A7EF4F57 /* [CP] Embed Pods Frameworks */,
+				8EAC3C29283302110060ADB1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -180,10 +210,72 @@
 				8EB6E74327F2666200B5C8C0 /* Main.storyboard in Resources */,
 				8EB6E73C27F245AA00B5C8C0 /* LaunchScreen.storyboard in Resources */,
 				8EB6E73927F245AA00B5C8C0 /* Assets.xcassets in Resources */,
+				8E49EF612832F29B00FDED51 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8B7534314167B6322720A173 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-raceGame-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EAC3C29283302110060ADB1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
+		};
+		A47B4D6BAAA423C6A7EF4F57 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-raceGame/Pods-raceGame-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-raceGame/Pods-raceGame-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-raceGame/Pods-raceGame-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8EB6E72827F245A900B5C8C0 /* Sources */ = {
@@ -348,11 +440,13 @@
 		};
 		8EB6E74127F245AA00B5C8C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FD50EAD7BA4B2C59A192C55 /* Pods-raceGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZU4UB25UN9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = raceGame/Info.plist;
@@ -380,6 +474,7 @@
 		};
 		8EB6E74227F245AA00B5C8C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D699777FAA7F5837CDFF98CC /* Pods-raceGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
