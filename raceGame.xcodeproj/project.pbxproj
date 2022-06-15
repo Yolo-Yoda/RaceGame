@@ -17,6 +17,7 @@
 		8E412D2427F6449A001CE670 /* Appsettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E412D2327F6449A001CE670 /* Appsettings.swift */; };
 		8E412D2627FB3947001CE670 /* UiColor+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E412D2527FB3947001CE670 /* UiColor+Codable.swift */; };
 		8E49EF612832F29B00FDED51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E49EF602832F29B00FDED51 /* GoogleService-Info.plist */; };
+		8E72D43C2857D1FC00E0FC80 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72D43B2857D1FC00E0FC80 /* ViewModel.swift */; };
 		8E8411FD2811E77F004A0C67 /* Obstacles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8411FC2811E77E004A0C67 /* Obstacles.swift */; };
 		8E8411FF2811E7BE004A0C67 /* ResultRace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8411FE2811E7BE004A0C67 /* ResultRace.swift */; };
 		8EB6E73027F245A900B5C8C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB6E72F27F245A900B5C8C0 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 		8E412D2327F6449A001CE670 /* Appsettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appsettings.swift; sourceTree = "<group>"; };
 		8E412D2527FB3947001CE670 /* UiColor+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiColor+Codable.swift"; sourceTree = "<group>"; };
 		8E49EF602832F29B00FDED51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8E72D43B2857D1FC00E0FC80 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		8E8411FC2811E77E004A0C67 /* Obstacles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacles.swift; sourceTree = "<group>"; };
 		8E8411FE2811E7BE004A0C67 /* ResultRace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRace.swift; sourceTree = "<group>"; };
 		8EB6E72C27F245A900B5C8C0 /* raceGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = raceGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,7 @@
 				8EB6E72F27F245A900B5C8C0 /* AppDelegate.swift */,
 				8EB6E73127F245A900B5C8C0 /* SceneDelegate.swift */,
 				8EB6E73327F245A900B5C8C0 /* ViewController.swift */,
+				8E72D43B2857D1FC00E0FC80 /* ViewModel.swift */,
 				8E11809B2812EFFE001591BB /* ViewController+Delegates.swift */,
 				8E412D1F27F61FB4001CE670 /* SettingsViewController.swift */,
 				8EE7F60827FF7BEA008C89EA /* GameViewController.swift */,
@@ -288,6 +291,7 @@
 				8EE7F60727FDBA42008C89EA /* FileStorage.swift in Sources */,
 				8E412D2427F6449A001CE670 /* Appsettings.swift in Sources */,
 				8EB6E73027F245A900B5C8C0 /* AppDelegate.swift in Sources */,
+				8E72D43C2857D1FC00E0FC80 /* ViewModel.swift in Sources */,
 				8E412D2627FB3947001CE670 /* UiColor+Codable.swift in Sources */,
 				8E8411FF2811E7BE004A0C67 /* ResultRace.swift in Sources */,
 				8E11809C2812EFFE001591BB /* ViewController+Delegates.swift in Sources */,
