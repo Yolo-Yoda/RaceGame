@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import FirebaseAnalytics
 
 class AppSettings {
     
@@ -24,6 +25,9 @@ class AppSettings {
         }
         set (newName) {
             UserDefaults.standard.set(newName, forKey: UserDefaultsKeys.name.rawValue)
+            Analytics.logEvent("Change_Name", parameters: [
+                "name_change_to": newName as String,
+            ])
         }
     }
     

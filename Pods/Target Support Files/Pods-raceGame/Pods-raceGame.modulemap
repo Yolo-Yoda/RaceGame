@@ -1,0 +1,6 @@
+framework module Pods_raceGame {
+  umbrella header "Pods-raceGame-umbrella.h"
+
+  export *
+  module * { export * }
+}

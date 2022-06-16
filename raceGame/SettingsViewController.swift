@@ -1,4 +1,6 @@
 import UIKit
+import FirebaseCrashlytics
+import FirebaseAnalytics
 
 class SettingsViewController: UIViewController {
     
@@ -39,6 +41,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         defaultSettings()
+        analyticsManager(ivent: 1)
     }
     
     // MARK: - Public methods
@@ -75,6 +78,7 @@ class SettingsViewController: UIViewController {
     }
     
     func sequeExit() {
+        analyticsManager(ivent: 2)
         dismiss(animated: true, completion: nil)
     }
     
@@ -190,7 +194,18 @@ class SettingsViewController: UIViewController {
     func switcherObstacles(_ index: Int) {
         let finalObstaclesTagCollection = obstaclesTagCollection + obstacles2TagCollection
         if obstacles[index] {
-            guard getObstaclesCount() > 1 else { return }
+            guard getObstaclesCount() > 1 else {
+                let userInfo = [
+                  NSLocalizedDescriptionKey: NSLocalizedString("Obstacles collection failed", comment: ""),
+                  NSLocalizedFailureReasonErrorKey: NSLocalizedString("Obstacles collection empty", comment: ""),
+                  "ProductID": "Bundle version: \(Bundle.version())",
+                  "View": "SettingsView"
+                ]
+                let error = NSError.init(domain: NSCocoaErrorDomain,
+                                         code: -1001,
+                                         userInfo: userInfo)
+                Crashlytics.crashlytics().record(error: error)
+                return }
             finalObstaclesTagCollection[index].layer.borderColor = UIColor.black.cgColor
             obstacles[index] = false
         } else {
@@ -200,6 +215,33 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - Private methods
+    
+    private func analyticsManager(ivent: Int) {
+        var iventName = ""
+        var obstacles = ""
+        if ivent == 1 {
+            iventName = "Old_Settings"
+            obstacles = "Old_Obstacles"
+        } else if ivent == 2 {
+            iventName = "New_Settings"
+            obstacles = "New_Obstacles"
+        }
+        Analytics.logEvent(iventName, parameters: [
+            "name": AppSettings.shared.name as String,
+            "speed": AppSettings.shared.speed as Int,
+            "color": AppSettings.shared.carColor as String,
+            "count_games": AppSettings.shared.countGames as Int,
+            "record": AppSettings.shared.recordOfGame as Int,
+        ])
+        Analytics.logEvent(obstacles, parameters: [
+            "smallcar": AppSettings.shared.obstacles.smallCar as Bool,
+            "bigcar": AppSettings.shared.obstacles.bigcar as Bool,
+            "motorcycle": AppSettings.shared.obstacles.motocycle as Bool,
+            "tree": AppSettings.shared.obstacles.tree as Bool,
+            "conus": AppSettings.shared.obstacles.conus as Bool,
+            "rock": AppSettings.shared.obstacles.rock as Bool,
+        ])
+    }
     
     private func getObstaclesCount() -> Int {
         obstacles.reduce(0) { counter, current in

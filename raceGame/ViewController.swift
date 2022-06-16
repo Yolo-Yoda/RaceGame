@@ -1,4 +1,6 @@
 import UIKit
+import FirebaseCrashlytics
+import FirebaseAnalytics
 
 class ViewController: UIViewController, FirstViewControllerDelegate {
     
@@ -89,6 +91,16 @@ class ViewController: UIViewController, FirstViewControllerDelegate {
     
     func makeScoreboardTableView() {
         guard AppSettings.shared.lastScores.name != "" else {
+            let userInfo = [
+              NSLocalizedDescriptionKey: NSLocalizedString("Enter user name failed", comment: ""),
+              NSLocalizedFailureReasonErrorKey: NSLocalizedString("User enter empty name", comment: ""),
+              "ProductID": "Bundle version: \(Bundle.version())",
+              "View": "StartView"
+            ]
+            let error = NSError.init(domain: NSCocoaErrorDomain,
+                                     code: -1001,
+                                     userInfo: userInfo)
+            Crashlytics.crashlytics().record(error: error)
             return
         }
         dataArray.append(AppSettings.shared.lastScores)
@@ -192,8 +204,7 @@ class ViewController: UIViewController, FirstViewControllerDelegate {
     }
     
     @IBAction func startButton(_ sender: Any) {
-        //performSegue(withIdentifier: "goGameViewController", sender: nil)
-        //showMainAlertCheckingPassword()
+        Analytics.logEvent("User_start_game", parameters: nil)
     }
     
     @IBAction func profileButtonPushed(_ sender: Any) {

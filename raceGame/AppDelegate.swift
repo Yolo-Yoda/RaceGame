@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         UserDefaults.standard.set(true, forKey: "firstStartedApp")
+        FirebaseApp.configure()
         return true
     }
 

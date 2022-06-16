@@ -1,5 +1,7 @@
 import UIKit
 import CoreMotion
+import FirebaseCrashlytics
+import FirebaseAnalytics
 
 class GameViewController: UIViewController {
     
@@ -58,27 +60,49 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         defaultSettings()
         speedOfAnimation = takeCarSpeed()
-        guard motionManager.isDeviceMotionAvailable else { return }
-        motionManager.deviceMotionUpdateInterval = 0.3
-        motionManager.startDeviceMotionUpdates(to: .main) { [self] (data, error) in
-            guard error == nil else { return }
-            guard data != nil else { return }
-            if data?.attitude.roll ?? 0 < -0.3 {
-                guard carImage.frame.origin.x > 0 + mainSettings.widthCar else { return }
-                carImage.frame = CGRect(
-                    x: carImage.frame.origin.x - mainSettings.screenWidght/3,
-                    y: carImage.frame.origin.y,
-                    width: mainSettings.widthCar,
-                    height: mainSettings.heightCar)
-            } else if data?.attitude.roll ?? 0 > 0.3 {
-                guard carImage.frame.origin.x < mainSettings.screenWidght - mainSettings.widthCar - 40 else { return }
-                carImage.frame = CGRect(
-                    x: carImage.frame.origin.x + mainSettings.screenWidght/3,
-                    y: carImage.frame.origin.y,
-                    width: mainSettings.widthCar,
-                    height: mainSettings.heightCar)
-            }
-        }
+        motion()
+    }
+    
+   
+    
+    func leftTurn () {
+        guard carImage.frame.origin.x > 0 + mainSettings.widthCar else {
+            let userInfo = [
+              NSLocalizedDescriptionKey: NSLocalizedString("Left turn failed", comment: ""),
+              NSLocalizedFailureReasonErrorKey: NSLocalizedString("Car break left screen view", comment: ""),
+              "ProductID": "Bundle version: \(Bundle.version())",
+              "View": "GameView"
+            ]
+            let error = NSError.init(domain: NSCocoaErrorDomain,
+                                     code: -1001,
+                                     userInfo: userInfo)
+            Crashlytics.crashlytics().record(error: error)
+            return }
+        carImage.frame = CGRect(
+            x: carImage.frame.origin.x - mainSettings.screenWidght/3,
+            y: carImage.frame.origin.y,
+            width: mainSettings.widthCar,
+            height: mainSettings.heightCar)
+    }
+    
+    func rightTurn() {
+        guard carImage.frame.origin.x < mainSettings.screenWidght - mainSettings.widthCar - 40 else {
+            let userInfo = [
+            NSLocalizedDescriptionKey: NSLocalizedString("Right turn failed", comment: ""),
+            NSLocalizedFailureReasonErrorKey: NSLocalizedString("Car break right screen view", comment: ""),
+            "ProductID": "Bundle version: \(Bundle.version())",
+            "View": "GameView"
+          ]
+          let error = NSError.init(domain: NSCocoaErrorDomain,
+                                   code: -1001,
+                                   userInfo: userInfo)
+          Crashlytics.crashlytics().record(error: error)
+          return }
+        carImage.frame = CGRect(
+            x: carImage.frame.origin.x + mainSettings.screenWidght/3,
+            y: carImage.frame.origin.y,
+            width: mainSettings.widthCar,
+            height: mainSettings.heightCar)
     }
 
     override func viewDidLayoutSubviews() {
@@ -298,6 +322,22 @@ class GameViewController: UIViewController {
         return UIImage(named: obstacleName)
     }
     
+    private func motion() {
+        guard motionManager.isDeviceMotionAvailable else { return }
+        motionManager.deviceMotionUpdateInterval = 0.3
+        motionManager.startDeviceMotionUpdates(to: .main) { [weak self] (data, error) in
+            guard let data = data else { return }
+            guard error == nil else {
+                Crashlytics.crashlytics().record(error: error!)
+                return }
+            if data.attitude.roll < -0.3 {
+                self?.leftswipedByUser(nil)
+            } else if data.attitude.roll > 0.3 {
+                self?.rightswipedByUser(nil)
+            }
+        }
+    }
+    
     private func updateMainSettings() -> MainSettings {
         let screenWidght = view.frame.width
         let screenHeight = view.frame.height
@@ -356,6 +396,17 @@ class GameViewController: UIViewController {
                                                          date: .now))
         delegate?.updateCountGames(text: AppSettings.shared.countGames)
         delegate?.updateScore(text: score)
+    }
+    
+    private func analyticsManager(ivent: Int) {
+        if ivent == 1 {
+            Analytics.logEvent("Game_End", parameters: [
+              AnalyticsParameterItemID: "Record_of_user",
+              AnalyticsParameterItemName: "Record \(score) points",
+              AnalyticsParameterContentType: score as Int,
+            ])
+            
+        }
     }
     
     private func checkDamage(
@@ -436,14 +487,14 @@ class GameViewController: UIViewController {
         scoreLabel.text = "SCORE: \(score)"
     }
     
-    @objc private func leftswipedByUser (_ gesture:UISwipeGestureRecognizer) {
+    @objc private func leftswipedByUser (_ gesture:UISwipeGestureRecognizer?) {
         if carImage.frame.origin.x > 0 + mainSettings.widthCar { carImage.frame = CGRect(
             x: carImage.frame.origin.x - mainSettings.screenWidght/3, y: carImage.frame.origin.y,
             width: mainSettings.widthCar, height: mainSettings.heightCar)
         }
     }
     
-    @objc private func rightswipedByUser (_ gesture:UISwipeGestureRecognizer) {
+    @objc private func rightswipedByUser (_ gesture:UISwipeGestureRecognizer?) {
         if carImage.frame.origin.x < mainSettings.screenWidght - mainSettings.widthCar - 40 {
             carImage.frame = CGRect(
                 x: carImage.frame.origin.x + mainSettings.screenWidght/3, y: carImage.frame.origin.y,
@@ -470,6 +521,7 @@ class GameViewController: UIViewController {
                                       handler: { _ in
             self.sequeExit()
         }))
+        analyticsManager(ivent: 1)
         self.present(alert, animated: true, completion: nil)
     }
 }
