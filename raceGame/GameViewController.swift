@@ -1,4 +1,5 @@
 import UIKit
+import CoreMotion
 
 class GameViewController: UIViewController {
     
@@ -25,6 +26,8 @@ class GameViewController: UIViewController {
     lazy var mainSettings: MainSettings = updateMainSettings()
 
     var speedOfAnimation : [Double] = []
+    
+    let motionManager = CMMotionManager()
     
     // MARK: - IBOutlets
     
@@ -55,8 +58,29 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         defaultSettings()
         speedOfAnimation = takeCarSpeed()
+        guard motionManager.isDeviceMotionAvailable else { return }
+        motionManager.deviceMotionUpdateInterval = 0.3
+        motionManager.startDeviceMotionUpdates(to: .main) { [self] (data, error) in
+            guard error == nil else { return }
+            guard data != nil else { return }
+            if data?.attitude.roll ?? 0 < -0.3 {
+                guard carImage.frame.origin.x > 0 + mainSettings.widthCar else { return }
+                carImage.frame = CGRect(
+                    x: carImage.frame.origin.x - mainSettings.screenWidght/3,
+                    y: carImage.frame.origin.y,
+                    width: mainSettings.widthCar,
+                    height: mainSettings.heightCar)
+            } else if data?.attitude.roll ?? 0 > 0.3 {
+                guard carImage.frame.origin.x < mainSettings.screenWidght - mainSettings.widthCar - 40 else { return }
+                carImage.frame = CGRect(
+                    x: carImage.frame.origin.x + mainSettings.screenWidght/3,
+                    y: carImage.frame.origin.y,
+                    width: mainSettings.widthCar,
+                    height: mainSettings.heightCar)
+            }
+        }
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
