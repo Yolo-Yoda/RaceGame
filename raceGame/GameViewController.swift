@@ -54,6 +54,8 @@ class GameViewController: UIViewController {
         "ObstacleRock"
     ]
     
+    let viewModel = RecordViewModel()
+    
     // MARK: - Override methods
     
     override func viewDidLoad() {
@@ -396,7 +398,24 @@ class GameViewController: UIViewController {
                                                          date: .now))
         delegate?.updateCountGames(text: AppSettings.shared.countGames)
         delegate?.updateScore(text: score)
+        //getMyResult()
+        viewModel.subresults.append(.resultRace(info: ResultRace(name: AppSettings.shared.name,
+                                                                 score: score,
+                                                                 date: .now)))
+        viewModel.dataArrayNew.onNext([ResultRaces(model: .main, items: viewModel.subresults)])
     }
+    
+    func getMyResult() {
+        
+        var subResults = [TableViewItem]()
+        
+        subResults = ([
+            .resultRace(info: ResultRace(name: AppSettings.shared.name,score: score,date: .now))
+        ])
+        viewModel.dataArrayNew.onNext([ResultRaces(model: .main, items: subResults)])
+
+    }
+ 
     
     private func analyticsManager(ivent: Int) {
         if ivent == 1 {

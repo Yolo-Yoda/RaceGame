@@ -1,8 +1,12 @@
 import UIKit
 import FirebaseCrashlytics
 import FirebaseAnalytics
+import RxSwift
+import RxCocoa
+import RxDataSources
 
-class ViewController: UIViewController, FirstViewControllerDelegate {
+
+class ViewController: UIViewController, FirstViewControllerDelegate, UIScrollViewDelegate {
     
     func update(text: String) {
         addingProfileName()
@@ -31,6 +35,13 @@ class ViewController: UIViewController, FirstViewControllerDelegate {
     
     var dataArray: [ResultRace] = []
     
+    let viewModel = RecordViewModel()
+    // MARK: - RXMod
+    
+    
+    
+    let bag = DisposeBag()
+    
     var maxCountOfDataArray = 30
     
     // MARK: - IBOutlets
@@ -55,16 +66,32 @@ class ViewController: UIViewController, FirstViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
+    
+    
+    private lazy var dataSource = RxTableViewSectionedReloadDataSource<ResultRaces>(configureCell: configureCell)
+    
+    private lazy var configureCell: RxTableViewSectionedReloadDataSource<ResultRaces>.ConfigureCell = {
+        [unowned self] (dataSource, tableView, indexPath, item) in
+        switch item {
+        case .resultRace(let info):
+            return self.configreResultCell(result: info, atIndex: indexPath)}
+        }
+            
     // MARK: - Override methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         defaultSettings()
         tapActionRecognizer()
-        self.tableView.register(UINib(nibName: "ScoreTableViewCell", bundle: nil), forCellReuseIdentifier: "ScoreCell")
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        tableView.backgroundColor = .clear
+        setupRxCollectionView()
+    }
+    
+    func configreResultCell(result: ResultRace, atIndex: IndexPath) -> UITableViewCell {
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: atIndex) as? ScoreTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.setupCell(_With: result)
+        return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,6 +102,19 @@ class ViewController: UIViewController, FirstViewControllerDelegate {
             destination.delegate = self
         }
     }
+    
+    func setupRxCollectionView(){
+        tableView.rx.setDelegate(self).disposed(by: bag)
+        self.tableView.register(UINib(nibName: "ScoreTableViewCell", bundle: nil), forCellReuseIdentifier: "ScoreCell")
+        viewModel.dataArrayNew
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: bag)
+        
+        viewModel.dataArrayNew.onNext([ResultRaces(model: .main, items: viewModel.subresults)])
+        //viewModel.getInformation()
+        tableView.backgroundColor = .clear
+    }
+    
     // MARK: - Public methods
     
     func defaultSettings() {

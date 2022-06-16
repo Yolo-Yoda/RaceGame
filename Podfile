@@ -11,5 +11,8 @@ target 'raceGame' do
   # Pods for raceGame
 pod 'FirebaseAuth'
 pod 'FirebaseFirestore'
+pod 'RxSwift', '~> 6.5'
+pod 'RxCocoa', '~> 6.5'
+pod 'RxDataSources', '~> 5.0'
 
 end

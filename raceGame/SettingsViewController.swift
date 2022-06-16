@@ -5,7 +5,7 @@ import FirebaseAnalytics
 class SettingsViewController: UIViewController {
     
     // MARK: - Public properties
-    
+
     weak var delegate: FirstViewControllerDelegate?
     
     var defSpeedNewSpeed : [Int] = []
